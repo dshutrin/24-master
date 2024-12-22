@@ -1,0 +1,5 @@
+venv
+.idea
+media/cat_images/*
+media/products_images/*
+media/tmp/*

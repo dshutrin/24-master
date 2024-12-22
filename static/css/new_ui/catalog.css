@@ -1,0 +1,145 @@
+@media (width > 500px) {
+    .catalog-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        padding: 5rem 0;
+        background-color: #560BAD;
+        color: white;
+    }
+
+    .catalog-header > h1 {
+        font-size: 60px;
+        margin: 0;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    .catalog-header > h3 {
+        font-size: 40px;
+        margin: 0;
+    }
+
+    .data {
+        display: grid;
+        padding: 1rem;
+        width: calc(100% - 2rem);
+        grid-template-columns: 15% 85%;
+    }
+
+    .data::-webkit-scrollbar {
+        display: block;
+    }
+
+    .filter-select {
+        width: 100%;
+        margin-bottom: 0.75rem;
+        font-size: 20px;
+        padding: 0.2rem;
+    }
+
+    .filter-input {
+        width: calc(100% - 0.4rem - 4px);
+        margin-bottom: 0.75rem;
+        font-size: 20px;
+        padding: 0.2rem;
+    }
+
+    .products-list {
+        margin-left: 1rem;
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+    }
+
+    .catalog-product {
+        position: relative;
+        transition: all 0.2s ease-in-out;
+
+        margin: 0.5rem;
+        max-height: 25vh;
+        border: 1px solid lightgray;
+        border-radius: 10px;
+        padding: 1rem;
+        padding-bottom: 2rem;
+
+        -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.29);
+        -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.29);
+        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.29);
+    }
+
+    .catalog-product-image-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80%;
+    }
+
+    .catalog-product-image {
+        max-height: 80%;
+        max-width: 100%;
+    }
+
+    .catalog-product-data {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .catalog-product-price {
+        color: green;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .catalog-product-link {
+        display: block;
+        position: absolute;
+        background-color: #4895EF;
+        color: white;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        bottom: 0.5rem;
+        right: 1rem;
+    }
+
+    .catalog-product-count {
+        display: block;
+        position: absolute;
+        background-color: #4895EF;
+        color: white;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        bottom: 0.5rem;
+        width: 5rem;
+        right: 1rem;
+    }
+
+    .filter-button {
+        cursor: pointer;
+        color: white;
+        background-color: #447ddc;
+        font-size: 20px;
+        border: none;
+        border-radius: 10px;
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+
+    .double-input {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+
+    .dinp {
+        display: flex;
+        margin-right: 0.5rem;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,44 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/admin_panel/edit_cat.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <h1 id="add">Добавление картинки</h1>
+    <div class="edit">
+        <div class="filler"></div>
+         <div class="form">
+
+            <form class="forma" action="" method="post" enctype="multipart/form-data">
+
+                {% for f in form %}
+                        <div class="form-field">
+                            <label id="label_{{ f.id_for_label }}" for="{{ f.id_for_label }}">{{ f.label }}</label>
+                            {{ f }}
+                        </div>
+                {% endfor %}
+
+                {% csrf_token %}
+                <div class="but-div">
+                    <button class="form-button" type="submit">Сохранить</button>
+                    </div>
+            </form>
+            <div class="filler"></div>
+        </div>
+        <div class="filler"></div>
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        document.getElementById('id_image').addEventListener('change', () => {
+            document.getElementById('label_id_image').innerText = document.getElementById('id_image').value
+        })
+
+    </script>
+{% endblock %}

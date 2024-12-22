@@ -1,0 +1,221 @@
+#namer {
+    margin-top: 15vh;
+    margin-left: 1rem;
+}
+
+.trash-content {
+    margin: 1rem;
+    margin-top: 2vh;
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.products-list {
+    width: calc(100% - 4rem);
+    background-color: rgba(152, 152, 152, 0.1);
+    padding: 1rem;
+    border-radius: 2rem;
+}
+
+.trash-product {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 15% 30% 20% 25% 10%;
+    margin-bottom: 2rem;
+    border-radius: 2rem;
+    background-color: rgba(255, 255, 255);
+}
+
+.iimg {
+    width: 100%;
+}
+
+.tp-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.pname {
+    font-size: 18px;
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.pcode {
+    font-size: 14px;
+    color: #a6a6a6;
+}
+
+.td-counter {
+    width: calc(100% - 2rem);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.counter {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.counter > input {
+    -webkit-text-fill-color: #001a34;
+    background-color: hsla(0, 0%, 100%, 0);
+    box-sizing: border-box;
+    caret-color: #005bff;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+    outline: none;
+    padding: 10px;
+    vertical-align: top;
+    width: 100%;
+    text-align: center;
+
+    background-color: #fff;
+    border: 2px solid #b3bcc5;
+    border-radius: 6px;
+    color: #001a34;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+    transition: border-color .2s cubic-bezier(.25,.8,.25,1);
+    white-space: nowrap;
+    will-change: transform, border-color, top, background-color;
+}
+
+.counter > button {
+    -webkit-touch-callout: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    align-items: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 30px;
+    font-weight: inherit;
+    height: 44px;
+    justify-content: center;
+    min-width: 44px;
+    padding: 0;
+    position: relative;
+    text-decoration: none;
+    transition: transform .1s cubic-bezier(.55,0,1,.45);
+    white-space: normal;
+    background-color: rgba(0, 150, 255, .078);
+    color: #005bff;
+    margin: 0 10px;
+}
+
+.rm {
+    -webkit-touch-callout: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    align-items: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 20px;
+    font-weight: inherit;
+    height: 44px;
+    justify-content: center;
+    margin: 0;
+    min-width: 44px;
+    width: 44px;
+    padding: 0;
+    position: relative;
+    text-decoration: none;
+    background-color: rgba(0, 150, 255, .078);
+    color: #ff0000;
+    transition: transform .1s cubic-bezier(.55,0,1,.45);
+    white-space: normal;
+}
+
+.tp-price {
+    padding: 1rem;
+    align-content: center;
+}
+
+.tp-img {
+    padding: 1rem;
+    align-content: center;
+}
+
+.tp-rmb {
+    padding: 1rem 0;
+    align-content: center;
+}
+
+.data-block {
+    background-color: rgba(152, 152, 152, 0.1);
+    border-radius: 2rem;
+    width: 80%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.complete-block {
+    width: 100%;
+    align-content: center;
+}
+
+#accept {
+    background-color: #16b144;
+    color: white;
+    border: none;
+    margin: 1rem;
+    width: calc(100% - 2rem);
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#accept:hover {
+    background-color: #13bf46;
+}
+
+#inf {
+    display: block;
+    text-align: center;
+    background-color: rgba(255, 215, 0, 0.4);
+    padding: 5px 10px;
+    margin: 0 2rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+
+#contacts-error {
+    margin: 1rem;
+    background-color: indianred;
+    color: white;
+    font-size: 18px;
+    display: block;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+}

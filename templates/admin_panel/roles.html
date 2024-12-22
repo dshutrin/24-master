@@ -1,0 +1,64 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/admin_panel/roles.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="head-block">
+        <h1>Управление ролями пользователей</h1>
+        <div class="add-link-block">
+            <a href="/admin_panel/roles/add">Добавить роль</a>
+        </div>
+    </div>
+
+    <table class="tlist">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Доступ к панели администратора</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for role in roles %}
+                <tr id="r-{{role.id}}">
+                    <td>{{ role.name }}</td>
+                    <td>
+                        <input type="checkbox" disabled
+                            {% if role.access_to_admin_panel %}
+                                checked="checked"
+                            {% endif %}
+                        >
+                    </td>
+                    <td class="actions-td">
+                        <a class="edit" href="/admin_panel/edit_role/{{role.id}}">
+                            <i class="material-icons-outlined">
+                                edit
+                            </i>
+                        </a>
+                        <button class="delete" onclick="delete_role({{role.id}})">
+                            <i class="material-icons-outlined">
+                                delete
+                            </i>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div id="delete_modal" style="display: none">
+        <div class="head">
+            <h1 id="rm-modal-h"></h1>
+        </div>
+        <div class="body">
+            <button id="cancel-button" type="button" onclick="document.getElementById('delete_modal').style.display = 'none'">Отмена</button>
+            <button id="rm-button" type="button">Удалить</button>
+        </div>
+    </div>
+
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/admin_panel/roles.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/admin_panel/roles.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="head-block">
+        <h1>Управление категориями товаров</h1>
+        <div class="add-link-block">
+            <a href="/admin_panel/categories/add">Добавить категорию</a>
+        </div>
+    </div>
+
+    <table class="tlist">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+                <tr id="c-{{ category.id }}">
+                    <td>{{ category.name }}</td>
+                    <td class="actions-td">
+                        <button class="delete" onclick="delete_category({{ category.id }})">
+                            <i class="material-icons-outlined">
+                                delete
+                            </i>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div id="delete_modal" style="display: none">
+        <h1 id="del_cat_name">Вы действительно хотите удалить эту категорию?</h1>
+        <div class="buttons_block">
+            <button id="cancel-button" type="button" onclick="document.getElementById('delete_modal').style.display='none'">Отмена</button>
+            <button id="rm-button" type="button">Удалить</button>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/admin_panel/categories.js' %}"></script>
+{% endblock %}

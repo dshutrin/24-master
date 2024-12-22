@@ -1,0 +1,62 @@
+input[type="file"] {
+    display: none;
+}
+
+#label_file {
+    text-align: center;
+    width: 40vw;
+    border: 3px dashed grey;
+    border-radius: 20px;
+    padding: 1rem 0;
+    cursor: pointer;
+    background-color: #fff;
+    margin: 2vh;
+}
+
+#label_file:hover {
+    background-color: #e8e8e8;
+}
+
+.form-c{
+    width: calc(100% - 4vh);
+    padding: 2vh;
+
+}
+
+form{
+    display: grid;
+    grid-template-columns; 100%;
+    justify-content: center;
+
+}
+
+
+#butn{
+    width: 25vw;
+    border: none;
+    background-color: #39a157;
+    color: whitesmoke;
+    font-size: 20px;
+    padding: 0.7rem 0rem;
+    border-radius: 10px;
+    min-width: 100px;
+}
+
+.bt-c{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+#butn:hover{
+    cursor: pointer;
+}
+
+.err-list{
+    width: calc(100% - 8vh - 15px);
+    margin: 2vh;
+    padding: 2vh;
+    margin-top: 5vh;
+    border-radius: 40px;
+    border: 5px dashed #eb4034;
+}

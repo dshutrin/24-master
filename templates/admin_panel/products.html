@@ -1,0 +1,138 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/admin_panel/products.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="head-block">
+        <h1>Управление товарами</h1>
+        <div class="add-link-block">
+            <a class="am" href="/admin_panel/products/add">Добавить товар</a>
+            <a class="am" href="/admin_panel/products/add_price">Изменить прайс</a>
+        </div>
+    </div>
+
+    <table class="tlist">
+        <thead>
+            <tr>
+                <th>Внешний вид</th>
+                <th>Код продукта</th>
+                <th>Наименование</th>
+                <th>Возраст (от)</th>
+                <th>Возраст (до)</th>
+                <th>Высота</th>
+                <th>Ширина</th>
+                <th>Длина</th>
+                <th>Вес</th>
+                <th>Бетон</th>
+                <th>Время установки</th>
+                <th>Цена</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr id="p-{{product.id}}">
+                    <td>
+                        {% if product.photo %}
+                            <div class="product-image-block">
+                                <img class="image_photo" src="{{ product.photo.url }}">
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if product.product_code %}
+                            <span>{{ product.product_code }}</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if product.name %}
+                            {{ product.name }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if product.age_start %}
+                            {{ product.age_start }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if product.age_end %}
+                            {{ product.age_end }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if product.height %}
+                            {{ product.height }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if product.width %}
+                            {{ product.width }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if product.length %}
+                            {{ product.length }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if product.weight %}
+                            {{ product.weight }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if product.concrete %}
+                            {{ product.concrete }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if product.installation_time %}
+                            {{ product.installation_time }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if product.price %}
+                            {{ product.price }}₽
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="actions-td">
+                            <a class="edit" href="/admin_panel/products/edit/{{ product.id }}">
+                                <i class="material-icons-outlined">
+                                    edit
+                                </i>
+                            </a>
+                            <button  class="delete" onclick="delete_product({{product.id}}, '{{product.product_code}}')">
+                                <i class="material-icons-outlined">
+                                    delete
+                                </i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div id="delete_modal" style="display: none">
+        <div class="head">
+            <h1 id="rm-modal-h"></h1>
+        </div>
+        <div id="bns" class="body">
+            <button id="cancel-button" type="button" onclick="del_mod()">Отмена</button>
+            <button id="rm-button" type="button">Удалить</button>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/admin_panel/products.js' %}"></script>
+    <script>
+        function del_mod(){
+            document.getElementById('delete_modal').style.display = 'none'
+        }
+    </script>
+{% endblock %}

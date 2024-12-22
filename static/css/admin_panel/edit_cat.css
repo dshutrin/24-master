@@ -1,0 +1,72 @@
+.form, .sub-settings {
+    width: calc(100% - 4rem);
+    padding: 0 2rem;
+    margin-top: 2vh;
+}
+
+form {
+    width: 100%;
+    text-align: center;
+}
+
+.form-field {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    text-align: start;
+    margin-bottom: 2.7rem;
+
+}
+
+
+.form-button {
+    width: 60%;
+    background-color: #5897fb;
+    color: whitesmoke;
+    border: none;
+    border-radius: 7px;
+    font-size: 20px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+}
+
+.form-button:hover {
+    background-color: #447ddc;
+}
+
+
+#id_image {
+    display: none;
+}
+
+#label_id_image {
+    text-align: center;
+    width: 40vw;
+    border: 3px dashed grey;
+    border-radius: 20px;
+    padding: 1rem 0;
+    cursor: pointer;
+    background-color: #fff;
+    margin: 2vh;
+}
+
+#label_id_image:hover {
+    background-color: #e8e8e8;
+}
+
+
+form{
+    display: grid;
+    grid-template-columns; 100%;
+    justify-content: center;
+}
+
+.but-div{
+    display: flex;
+    justify-content: center;
+}
+
+.form-field > a{
+    text-decoration: underline;
+    color: blue;
+}

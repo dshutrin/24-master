@@ -1,0 +1,65 @@
+.form {
+    width: 100%;
+    margin-top: 5vh;
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+form {
+    width: 100%;
+    text-align: center;
+}
+
+.form-field {
+    width: 100%;
+    height: 4rem;
+    display: grid;
+    grid-template-columns: 100%;
+    text-align: start;
+    margin-bottom: 0.7rem;
+}
+
+.form-field > input {
+    width: calc(100% - 2rem);
+    padding: 0.2rem 1rem;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 16px;
+    height: 2rem;
+}
+
+.oop {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+}
+
+
+.form-button {
+    width: 60%;
+    background-color: #5897fb;
+    color: whitesmoke;
+    border: none;
+    border-radius: 7px;
+    font-size: 20px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+.form-button:hover {
+    background-color: #447ddc;
+}
+
+
+
+.but-elem {
+    height: 2rem;
+    width: 2rem;
+}
+
+#id_status{
+    border-radius: 7px;
+    height: 2rem;
+    font-size: 15px;
+    padding: 0.4rem 1rem;
+}

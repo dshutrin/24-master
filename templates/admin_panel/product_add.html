@@ -1,0 +1,49 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/admin_panel/admin_add_product.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <h1 id="add">Добавление товара</h1>
+    <div class="form">
+        <div class="filler"></div>
+        <form class="forma" action="" method="post" enctype="multipart/form-data">
+
+            {% for f in form %}
+                {% if f.label == 'Общий вид' %}
+                    <div class="form-field-duo">
+                        <label id="label_{{ f.id_for_label }}" for="{{ f.id_for_label }}">{{ f.label }}</label>
+                        {{ f }}
+                        <button id="clear_image_button" type="button" onclick="clear_image()">Очистить</button>
+                    </div>
+                {% else %}
+                    <div class="form-field">
+                        <label id="label_{{ f.id_for_label }}" for="{{ f.id_for_label }}">{{ f.label }}</label>
+                        {{ f }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            {% csrf_token %}
+            <button class="form-button" type="submit">Сохранить</button>
+        </form>
+        <div class="filler"></div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        document.getElementById('id_photo').addEventListener('change', () => {
+            document.getElementById('label_id_photo').innerText = document.getElementById('id_photo').value
+        })
+
+        function clear_image() {
+            document.getElementById('id_photo').value = null
+            document.getElementById('label_id_photo').innerText = 'Общий вид'
+        }
+    </script>
+{% endblock %}

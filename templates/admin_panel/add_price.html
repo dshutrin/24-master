@@ -1,0 +1,45 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/admin_panel/add_price.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h1>Изменение прайса</h1>
+
+<div class="form-c">
+    <form id="f1" method="post" enctype="multipart/form-data">
+        <label id="label_file" for="id_file">Файл прайса</label>
+        <input type="file" id="id_file" name="file" placeholder="Файл прайса" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+        <div class="bt-c"><button id="butn" type="submit" onclick="oncl()">Запустить</button></div>
+
+    </form>
+</div>
+
+{% if errs %}
+<div class="err-list">
+    <h1>Ошибки:</h1>
+    {% for e in errs %}
+        <div class="err">
+            <h5>{{e}}</h5>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/admin_panel/add_price.js' %}"></script>
+    <script>
+        function oncl() {
+            document.getElementById('f1').submit()
+            const btn = document.getElementById('butn')
+            btn.setAttribute('disabled', '')
+            btn.textContent = 'Загружаем...'
+            btn.style.backgroundColor = '#99bd9e'
+            }
+
+    </script>
+{% endblock %}

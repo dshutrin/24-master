@@ -1,0 +1,114 @@
+{% extends 'new_ui/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/new_ui/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="header">
+        <h1>Мастер Хабаровск</h1>
+        <h3>Мы делаем мир лучше, а людей счастливее</h3>
+    </div>
+
+    <div class="categories">
+        <h1>Лучшие категории</h1>
+
+        <div class="category-preview">
+            <div class="category-preview-row">
+                {% for cat in cats %}
+                    <a href="/categories/{{ cat.category.id }}" class="category">
+                        <div class="image-block">
+                            {% if cat.image %}
+                                <img src="{{ cat.image }}" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="title-block">
+                            <span class="home-cat-title">{{ cat.category.name }}</span>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="category-preview-row">
+                {% for cat in cats2 %}
+                    <a href="/categories/{{ cat.category.id }}" class="category">
+                        <div class="image-block">
+                            {% if cat.image %}
+                                <img src="{{ cat.image }}" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="title-block">
+                            <span class="home-cat-title">{{ cat.category.name }}</span>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="act-container">
+        <h1 class="f5" style="text-align: center; margin-top: 5rem;">Радость Детства</h1>
+        <h3 style="font-size: 30px; text-align: center">Откройте Мир Игры и Веселья</h3>
+
+        <div class="activities">
+
+            <div class="activity">
+                <img src="{% static 'imgs/home/act1.jpeg' %}" alt="" class="activity-img">
+                <div class="dat">
+                    <h3>Свежий Воздух</h3>
+                    <span>Заряд Энергии и Позитива</span>
+                </div>
+            </div>
+            <div class="activity">
+                <img src="{% static 'imgs/home/act2.jpeg' %}" alt="" class="activity-img">
+                <div class="dat">
+                    <h3>Творчество</h3>
+                    <span>Развивайте Фантазию и Мастерство</span>
+                </div>
+            </div>
+            <div class="activity">
+                <img src="{% static 'imgs/home/act4.jpeg' %}" alt="" class="activity-img">
+                <div class="dat">
+                    <h3>Активность</h3>
+                    <span>Здоровье и Веселье в Движении</span>
+                </div>
+            </div>
+            <div class="activity">
+                <img src="{% static 'imgs/home/act5.jpeg' %}" alt="" class="activity-img">
+                <div class="dat">
+                    <h3>Исследование</h3>
+                    <span>Открывайте Новые Горизонты и Знания</span>
+                </div>
+            </div>
+            <div class="activity">
+                <img src="{% static 'imgs/home/act3.jpeg' %}" alt="" class="activity-img">
+                <div class="dat">
+                    <h3>Дружба</h3>
+                    <span>Создавайте Новые Взаимоотношения</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="home-footer">
+    
+        <div class="home-footer-img-block">
+            <img src="{% static 'imgs/logo.svg' %}" alt="">
+        </div>
+    
+        <span>Благоустройство детских и спортивных площадок "Под ключ"</span>
+        <span>Официальный представитель завода "Мастер" по Хабаровскому краю</span>
+        <span style="font-weight: 600;">г. Хабаровск ул. Муравьёва-Амурского д.2 оф. 34</span>
+    </div>
+
+    <div id="construct">
+        <a href="https://designer.24-master.ru/editor/" target="_blank">
+            <img src="{% static 'imgs/constructor3.svg' %}" alt="">
+            <div class="">
+                <span>Конструктор площадок</span>
+            </div>
+        </a>
+    </div>
+
+{% endblock %}

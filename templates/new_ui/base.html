@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/new_ui/base.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <meta name="description" content='Компания "Мастер" - производитель детского игрового и спортивного оборудования для благоустройства территории.'>
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+
+            <img id="logo" src="{% static 'imgs/logo.svg' %}">
+
+            <ul class="main-menu">
+                <li><a href="/">Главная</a></li>
+                <li><a href="/catalog">Каталог</a></li>
+                <li><a href="/about">О нас</a></li>
+                {% if request.user.is_authenticated %}
+                    <li><a href="/trash">Корзина</a></li>
+                    <li><a href="/profile">Личный кабинет</a></li>
+                {% endif %}
+            </ul>
+
+            <div class="link">
+                {% if not request.user.is_authenticated %}
+                    <a id="to_products_link" href="/login">Авторизоваться</a>
+                {% else %}
+                    <a id="to_products_link" href="/logout">Выйти</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <script>
+        function show_menu(){
+            if (document.getElementById('mob_modal').style.top == '-49vh'){
+                document.getElementById('mob_modal').style.top = '0vh'}
+            else{
+                document.getElementById('mob_modal').style.top = '-49vh'}
+        }
+
+        function close_m(){
+            document.getElementById('mob_modal').style.top = '-49vh'
+        }
+    </script>
+
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% extends 'new_ui/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/new_ui/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="profile-block">
+
+        <div class="orders">
+
+            <h1>Заказ №{{ order.id }} ({{ order.status }})</h1>
+
+            <div class="orders-list">
+
+                {% for item in items %}
+                    <div class="order">
+
+                        <div class="">
+                            <span class="atr">Код товара:</span><br><span>{{ item.product.product_code }}</span>
+                        </div>
+                        <div class="">
+                            <span class="atr">Наименование:</span><br><span>{{ item.product.name }}</span>
+                        </div>
+                        <div class="">
+                            <span class="atr">Стоимость за единицу:</span><br><span>{{ item.product.price|intcomma }}₽</span>
+                        </div>
+                        <div class="">
+                            <span class="atr">Количество:</span><br><span>{{ item.pcount }}</span>
+                        </div>
+                        <div class="">
+                            <span>Общая стоимость:</span><br><span>{{ item.total_price }} ₽</span>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <div class="contacts">
+
+            <h1>Общие сведения</h1>
+
+            <div id="contacts-list" class="contacts-list">
+
+                <div class="contact">
+                    <h2>Общая стоимость: {{ ts|intcomma }} ₽</h2>
+                    <span>Товаров: {{ tpcount }}</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

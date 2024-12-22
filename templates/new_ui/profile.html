@@ -1,0 +1,76 @@
+{% extends 'new_ui/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/new_ui/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="profile-block">
+
+        <div class="orders">
+
+            <h1>История заказов</h1>
+
+            <div class="orders-list">
+
+                {% for order in orders %}
+                    <div class="order">
+                        <div class="">
+                            <span class="atr">ID заказа:</span><br><span>{{ order.id }}</span>
+                        </div>
+                        <div class="">
+                            <span class="atr">Подан:</span><br><span>{{ order.create_at }}</span>
+                        </div>
+                        <div class="">
+                            <span class="atr">Общая стоимость:</span><br><span>{{ order.total_price|intcomma }} ₽</span>
+                        </div>
+                        <div class="">
+                            <span class="atr">Статус:</span><br><span>{{ order.status }}</span>
+                        </div>
+                        <div class="">
+                            <a href="/orders/{{ order.id }}">Перейти</a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <div class="contacts">
+
+            <h1>Контактные данные</h1>
+
+            <div id="contacts-list" class="contacts-list">
+
+                <div class="contact">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email"
+                       {% if request.user.email %}
+                           value="{{ request.user.email }}"
+                       {% endif %}
+                    >
+                </div>
+                <div class="contact">
+                    <label for="phone_number">Номер телефона</label>
+                    <input type="number" id="phone_number" name="phone_number"
+                       {% if request.user.phone_number %}
+                           value="{{ request.user.phone_number }}"
+                       {% endif %}
+                    >
+                </div>
+
+                <button id="save_contacts" onclick="update_contacts()" type="button">Сохранить</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="{% static 'js/new_ui/profile.js' %}"></script>
+
+{% endblock %}

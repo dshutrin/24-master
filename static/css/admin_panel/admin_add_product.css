@@ -1,0 +1,90 @@
+.form {
+    width: 100%;
+    margin-top: 5vh;
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+}
+
+form {
+    width: 100%;
+    text-align: center;
+}
+
+.form-field {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    text-align: start;
+    margin-bottom: 0.7rem;
+}
+
+.form-field > input {
+    width: calc(100% - 2rem);
+    padding: 0.2rem 1rem;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 16px;
+}
+
+.form-field-duo {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    text-align: start;
+    margin-bottom: 0.7rem;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#label_id_photo {
+    text-align: center;
+    width: 100%;
+    border: 1px dashed black;
+    border-radius: 5px;
+    padding: 1rem 0;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+#label_id_photo:hover {
+    background-color: #e8e8e8;
+}
+
+#clear_image_button {
+    background-color: #df6161;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    margin-left: 0.3rem;
+    cursor: pointer;
+}
+
+#clear_image_button:hover {
+    background-color: #c54e4e;
+}
+
+.form-button {
+    width: 60%;
+    background-color: #5897fb;
+    color: whitesmoke;
+    border: none;
+    border-radius: 7px;
+    font-size: 20px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+}
+
+.form-button:hover {
+    background-color: #447ddc;
+}
+
+textarea {
+    resize: none;
+    width: calc(100% - 2rem);
+    padding: 1rem;
+    font-size: 20px;
+    border-radius: 5px;
+    height: 5vh;
+}

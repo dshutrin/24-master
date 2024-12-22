@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/admin_panel/base.css' %}">
+    {% block head %}
+    {% endblock %}
+    <title>Панель администратора</title>
+</head>
+<body>
+
+    <div class="content">
+
+        <aside>
+            <div id="logo-block">
+                <img id="logo" src="{% static 'imgs/logo.svg' %}" alt="...">
+            </div>
+            <div id="menu-block">
+                <ul id="menu">
+                    <li id="monitoring-el" class="menu-el">
+                        <a href="/admin_panel">
+                            <i class="material-icons-outlined">
+                                query_stats
+                            </i>
+                            Мониторинг
+                        </a>
+                    </li>
+                    <li id="roles-el" class="menu-el">
+                        <a href="/admin_panel/roles">
+                            <i class="material-icons-outlined">
+                                label
+                            </i>
+                            Роли
+                        </a>
+                    </li>
+                    <li id="tags-el" class="menu-el">
+                        <a href="/admin_panel/tags">
+                            <i class="material-icons-outlined">
+                                tag
+                            </i>
+                            Тэги
+                        </a>
+                    </li>
+                    <li id="categories-el" class="menu-el">
+                        <a href="/admin_panel/categories">
+                            <i class="material-icons-outlined">
+                                category
+                            </i>
+                            Категории товаров
+                        </a>
+                    </li>
+                    <li id="products-el" class="menu-el">
+                        <a href="/admin_panel/products">
+                            <i class="material-icons-outlined">
+                                view_list
+                            </i>
+                            Товары
+                        </a>
+                    </li>
+                    <li id="orders-el" class="menu-el">
+                        <a href="/admin_panel/orders">
+                            <i class="material-icons-outlined">
+                                local_atm
+                            </i>
+                            Заказы
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="back-block">
+                <div class="menu-el np">
+                    <a href="/">
+                        <i class="material-icons-outlined">
+                            web
+                        </i>
+                        Вернуться на сайт
+                    </a>
+                </div>
+            </div>
+        </aside>
+        <main>
+            <div class="navbar">
+                <h1>Панель администратора</h1>
+            </div>
+            <div class="data">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </main>
+
+    </div>
+
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>

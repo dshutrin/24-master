@@ -1,0 +1,112 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/admin_panel/admin_edit_product.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <h1 id="add">Изменение товара</h1>
+    <div class="edit">
+        <div class="form">
+            <form class="forma" action="" method="post" enctype="multipart/form-data">
+
+                {% for f in form %}
+                    {% if f.label == 'Общий вид' %}
+                            <div class="form-field-duo">
+                                <label id="label_{{ f.id_for_label }}" for="{{ f.id_for_label }}">
+                                    {% if photo_url %}
+                                        {{ photo_url }}
+                                    {% else %}
+                                        Общий вид
+                                    {% endif %}
+                                </label>
+                                {{ f }}
+                            </div>
+                    {% else %}
+                        <div class="form-field">
+                            <label id="label_{{ f.id_for_label }}" for="{{ f.id_for_label }}">{{ f.label }}</label>
+                            {{ f }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+                {% csrf_token %}
+                <button class="form-button" type="submit">Сохранить</button>
+            </form>
+        </div>
+        <div class="sub-settings">
+            <div class="tags">
+                <h2>Теги:</h2>
+                <div class="tags-list">
+                    {% for tag in product_tags %}
+                        <div id="tag-{{ tag.id }}-block" class="tag-selected">
+                            <label for="tag-{{ tag.id }}">{{ tag.name }}</label>
+                            <input type="checkbox" id="tag-{{ tag.id }}" checked="checked" onchange="update_tag({{ tag.id }})">
+                        </div>
+                    {% endfor %}
+
+                    {% for tag in all_tags %}
+                        <div id="tag-{{ tag.id }}-block" class="tag">
+                            <label for="tag-{{ tag.id }}">{{ tag.name }}</label>
+                            <input type="checkbox" id="tag-{{ tag.id }}" onchange="update_tag({{ tag.id }})">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="cats">
+                <h2>Категории:</h2>
+                <div class="cats-list">
+                    {% for cat in product_categories %}
+                        <div id="cat-{{ cat.id }}-block" class="cat-selected">
+                            <label for="cat-{{ cat.id }}">{{ cat.name }}</label>
+                            <input type="checkbox" id="cat-{{ cat.id }}" checked="checked" onchange="update_cat({{ cat.id }})">
+                        </div>
+                    {% endfor %}
+
+                    {% for cat in all_categories %}
+                        <div id="cat-{{ cat.id }}-block" class="cat">
+                            <label for="cat-{{ cat.id }}">{{ cat.name }}</label>
+                            <input type="checkbox" id="cat-{{ cat.id }}" onchange="update_cat({{ cat.id }})">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <input id="product_id" value="{{ pid }}" type="number" hidden>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/admin_panel/edit_product.js' %}"></script>
+    <script>
+    
+        document.getElementById('id_photo').addEventListener('change', () => {
+            document.getElementById('label_id_photo').innerText = document.getElementById('id_photo').value
+        })
+    
+
+
+        if ('{{photo_url}}' != 'False'){
+            let img_ = document.getElementsByClassName('form-field-duo')[0]
+            img_.childNodes[2].remove()
+            img_.childNodes[2].remove()
+            img_.childNodes[2].remove()
+            img_.childNodes[2].remove()
+            img_.childNodes[2].remove()
+            img_.childNodes[2].remove()
+            img_.childNodes[2].remove()
+            img_.childNodes[2].remove()
+        }
+        else{
+            let img__ = document.getElementsByClassName('form-field-duo')[1]
+            img__.childNodes[2].remove()
+        }
+
+
+    </script>
+{% endblock %}

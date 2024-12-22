@@ -1,0 +1,86 @@
+.profile-block {
+    margin-top: 10vh;
+    height: calc(90vh - 2rem);
+    width: calc(100vw - 2rem);
+    padding: 1rem;
+
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.profile-block::-webkit-scrollbar {
+    display: none;
+}
+
+.orders-list {
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 1rem;
+    background-color: rgba(136, 136, 136, 0.1);
+}
+
+.order {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.order > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.atr {
+    font-size: 18px;
+}
+
+.contacts-list {
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 1rem;
+    background-color: rgba(136, 136, 136, 0.1);
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact > label {
+    margin-bottom: 0.5rem;
+    font-size: 24px;
+}
+
+.contact > input {
+    font-size: 20px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    padding: 10px;
+    border: 1px solid lightgray;
+    outline: none;
+}
+
+.contact > input:focus {
+    outline: 2px solid lightgray;
+}
+
+#save_contacts {
+    background-color: #16b144;
+    color: white;
+    border: none;
+    margin: 1rem;
+    width: calc(100% - 2rem);
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#save_contacts:hover {
+    background-color: #13bf46;
+}

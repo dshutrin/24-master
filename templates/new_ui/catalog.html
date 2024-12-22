@@ -1,0 +1,128 @@
+{% extends 'new_ui/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/new_ui/catalog.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="catalog-header">
+        <h1>Мастер Хабаровск</h1>
+        <h3>Мы делаем мир лучше, а людей счастливее</h3>
+    </div>
+
+    <div class="content">
+
+        <div class="data">
+
+            <div class="filters">
+
+                <h1>Фильтры</h1>
+
+                <form method="post">
+
+                    <label for="cat_ch">Категория</label>
+                    <select id="cat_ch" class="filter-select" name="cat" id="">
+                        <option value="all">Все</option>
+                        {% for cat in cats %}
+                            <option value="{{ cat.id }}">{{ cat.name }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <label for="code_ch">Код продукта</label>
+                    <input id="code_ch" name="code_ch" type="text" class="filter-input">
+
+                    <label for="n_ch">Наименование товара</label>
+                    <input id="n_ch" name="n_ch" type="text" class="filter-input">
+
+                    <div class="double-input">
+                        <div class="dinp">
+                            <label for="a_s_ch">Возраст (от)</label>
+                            <input id="a_s_ch" name="a_s_ch" type="number" class="filter-input">
+                        </div>
+                        <div class="dinp">
+                            <label for="a_e_ch">Возраст (до)</label>
+                            <input id="a_e_ch" name="a_e_ch" type="number" class="filter-input">
+                        </div>
+                    </div>
+
+                    <div class="double-input">
+                        <div class="dinp">
+                            <label for="h_s_ch">Высота (от)</label>
+                            <input id="h_s_ch" name="h_s_ch" type="number" class="filter-input">
+                        </div>
+                        <div class="dinp">
+                            <label for="h_e_ch">Высота (до)</label>
+                            <input id="h_e_ch" name="h_e_ch" type="number" class="filter-input">
+                        </div>
+                    </div>
+
+                    <div class="double-input">
+                        <div class="dinp">
+                            <label for="w_s_ch">Ширина (от)</label>
+                            <input id="w_s_ch" name="w_s_ch" type="number" class="filter-input">
+                        </div>
+                        <div class="dinp">
+                            <label for="w_e_ch">Ширина (до)</label>
+                            <input id="w_e_ch" name="w_e_ch" type="number" class="filter-input">
+                        </div>
+                    </div>
+
+                    <div class="double-input">
+                        <div class="dinp">
+                            <label for="l_s_ch">Длина (от)</label>
+                            <input id="l_s_ch" name="l_s_ch" type="number" class="filter-input">
+                        </div>
+                        <div class="dinp">
+                            <label for="l_e_ch">Длина (до)</label>
+                            <input id="l_e_ch" name="l_e_ch" type="number" class="filter-input">
+                        </div>
+                    </div>
+
+                    <div class="double-input">
+                        <div class="dinp">
+                            <label for="price_s_ch">Цена (от)</label>
+                            <input id="price_s_ch" name="price_s_ch" type="number" class="filter-input">
+                        </div>
+                        <div class="dinp">
+                            <label for="price_e_ch">Цена (до)</label>
+                            <input id="price_e_ch" name="price_e_ch" type="number" class="filter-input">
+                        </div>
+                    </div>
+                    
+                    {% csrf_token %}
+                    <button class="filter-button" type="submit">Применить</button>
+                </form>
+            </div>
+
+            <div class="products-list">
+                {% for prod in products %}
+                    <div class="catalog-product">
+                        <div class="catalog-product-image-container">
+                            <img class="catalog-product-image" src="/media/{{ prod.prod.photo }}" alt="">
+                        </div>
+                        <div class="catalog-product-data">
+                            <span class="catalog-product-price">{{ prod.prod.price|intcomma }} ₽</span>
+                            <span title="{{ prod.prod.name }}" class="title">{{ prod.prod.name }}</span>
+                        </div>
+                        <div id="dp-{{ prod.prod.id }}" class="catalog-product-button">
+                            {% if request.user.is_authenticated %}
+                                {% if prod.in_trash %}
+                                    <input id="p-{{ prod.prod.id }}" onchange="update_uitp_count({{ request.user.id }}, {{ prod.prod.id }})" class="catalog-product-count" value="{{ prod.in_trash_count }}" type="number">
+                                {% else %}
+                                    <button type="button" onclick="add_product_to_trash({{ request.user.id }}, {{ prod.prod.id }})" class="catalog-product-link">В корзину</button>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="{% static 'js/new_ui/catalog.js' %}"></script>
+{% endblock %}

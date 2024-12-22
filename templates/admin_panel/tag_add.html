@@ -1,0 +1,30 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/admin_panel/tag_add.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <h1 id="add">Добавление тега</h1>
+
+    <div class="form-container">
+        <div class="filler"></div>
+        <div class="form">
+            <form class="forma" action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for f in form %}
+                <div class="form-field">
+                    {{ f }}
+                </div>
+                {% endfor %}
+                <div class="form-field">
+                    <button class="form-button" type="submit">Сохранить</button>
+                </div>
+            </form>
+        </div>
+        <div class="filler"></div>
+    </div>
+
+{% endblock %}

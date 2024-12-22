@@ -1,0 +1,36 @@
+.form-container {
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+}
+
+form {
+    margin-top: 20vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+input {
+    border: 1px solid #a6a6a6;
+    border-radius: 10px;
+    padding: 0.3rem 1rem;
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+
+button {
+    border: none;
+    padding: 0.3rem 1rem;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+    font-size: 20px;
+    background-color: #5897fb;
+    transition: all 0.2s ease-in-out;
+}
