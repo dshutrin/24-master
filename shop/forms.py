@@ -49,16 +49,15 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput, label='Пароль')
 
 
-class RegForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for visible in self.visible_fields():
-            visible.field.widget.attrs['placeholder'] = visible.field.label
-
-    login = forms.CharField(max_length=255, label='Логин')
+class RegForm(forms.ModelForm):
+    username = forms.CharField(max_length=255, label='Логин')
     password = forms.CharField(widget=forms.PasswordInput, label='Пароль')
     password2 = forms.CharField(widget=forms.PasswordInput, label='Пароль (повторно)')
     email = forms.EmailField(label='email')
+
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'email', 'password']
 
 
 class RoleForm(forms.ModelForm):

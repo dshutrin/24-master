@@ -48,5 +48,8 @@ urlpatterns = [
 	path('update_contacts', update_contacts),
 	path('orders/<int:oid>', detail_order),
 	path('about', about),
-	path('trash', trash)
+	path('trash', trash),
+	path('login', login),
+	path('logout', logout),
+	path('reg', registration)
 ] + admin_panel_urlpatterns

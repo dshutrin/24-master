@@ -1,0 +1,40 @@
+{% extends 'new_ui/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/new_ui/auth.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="catalog-header">
+        <h1 style="margin-top: 7rem;">Авторизация</h1>
+    </div>
+
+    <div class="content">
+
+        <div class="form-block">
+            <div class="filler"></div>
+            <form method="post">
+
+                {% for f in form %}
+                <div class="form_block">
+                    <label for="{{ f.id_for_label }}">{{ f.label }}:</label>
+                    {{f}}
+
+                    <span class="error">{{ f.errors }}</span>
+                </div>
+                {% endfor %}
+
+                {% csrf_token %}
+                <button type="submit">Зарегистрироваться</button>
+                <span>Уже зарегистрированы? <a href="/login">Войти</a></span>
+            </form>
+            <div class="filler"></div>
+        </div>
+
+    </div>
+
+    <script src="{% static 'js/new_ui/catalog.js' %}"></script>
+{% endblock %}

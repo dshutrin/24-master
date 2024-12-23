@@ -1,0 +1,87 @@
+.catalog-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    padding: 5rem 0;
+    background-color: #560BAD;
+    color: white;
+}
+
+.catalog-header > h1 {
+    font-size: 60px;
+    margin: 0;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.catalog-header > h3 {
+    font-size: 40px;
+    margin: 0;
+}
+
+.form-block {
+    width: 100vw;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+}
+
+form {
+    width: 100%;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form_block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+input {
+    font-size: 18px;
+    padding: 0.3rem 1rem;
+}
+
+label {
+    font-size: 20px;
+}
+
+form > button {
+    background-color: #4895EF;
+    color: white;
+    padding: 0.3rem 1rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+form > button:hover {
+    background-color: #307ed8;
+}
+
+form > span {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+form > a, form > a:active {
+    color: blue;
+}
+
+.error > ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.error {
+    color: #e35f5f;
+}

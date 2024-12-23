@@ -1,7 +1,7 @@
 from django.contrib.humanize.templatetags.humanize import intcomma
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound, JsonResponse
-from django.contrib.auth import authenticate, login as user_login, logout as user_logout, update_session_auth_hash
+from django.contrib.auth import authenticate, login as user_login, logout as user_logout
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.decorators import login_required
@@ -312,3 +312,57 @@ def detail_order(request, oid):
 
 	else:
 		return HttpResponse(status=404)
+
+
+def login(request):
+	if request.method == 'GET':
+		return render(request, 'new_ui/login_page.html')
+	elif request.method == 'POST':
+		username = request.POST["username"]
+		password = request.POST["password"]
+		usr = authenticate(request, username=username, password=password)
+		if usr is not None:
+			user_login(request, usr)
+			return HttpResponseRedirect('/')
+		else:
+			return render(request, 'new_ui/login_page.html')
+
+
+def logout(request):
+	user_logout(request)
+	return HttpResponseRedirect('/')
+
+
+def registration(request):
+	if request.method == 'GET':
+		return render(request, 'new_ui/reg.html', {
+			'form': RegForm()
+		})
+	elif request.method == 'POST':
+		form = RegForm(request.POST)
+		if form.is_valid():
+
+			username = form.cleaned_data['username']
+			email = form.cleaned_data['email']
+			psw1 = form.cleaned_data['password']
+			psw2 = form.cleaned_data['password2']
+
+			if psw1 == psw2:
+
+				user = CustomUser.objects.create_user(username=username, email=email, password=psw1)
+				user.set_password(psw1)
+				user.save()
+
+				user_login(request, user)
+				return HttpResponseRedirect('/')
+
+			else:
+				return render(request, 'new_ui/reg.html', {
+					'form': form
+				})
+
+		else:
+			return render(request, 'new_ui/reg.html', {
+				'form': form
+			})
+

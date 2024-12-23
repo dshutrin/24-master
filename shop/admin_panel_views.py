@@ -678,24 +678,6 @@ def add_price(request):
         return render(request, 'admin_panel/add_price.html', {'errs': errs})
 
 
-@csrf_exempt
-def set_cat_image(request):
-    if request.POST:
-        print(str(request.POST.get('formdata')))
-        '''cats = Category.objects.filter(id=request.POST.get('cid'), show_on_home=True)
-        if len(cats) > 0:
-            cat = cats[0]
-            img = request.POST['formdata'][0]
-            print(img)
-            if img:
-                CatImage(category=cat, image=img).save()
-                return JsonResponse({}, status=200)
-            else:
-                return JsonResponse({}, status=204)'''
-
-    return JsonResponse({}, status=204)
-
-
 @login_required
 @csrf_exempt
 def admin_edit_cat(request, cid):
